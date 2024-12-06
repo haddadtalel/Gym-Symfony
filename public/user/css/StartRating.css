@@ -1,20 +1,47 @@
-/* Custom styles for star rating */
-.rating-stars input[type="radio"] {
-    display: none; /* Hide the actual radio button */
-}
 
-.rating-stars label {
-    font-size: 2rem; /* Adjust size of stars */
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.1rem;
+  }
+  .rating-starsinput {
+    display: none;
+  }
+  .rating-stars input:hover ~ .star:before {
+    color: rgba(255, 204, 51, 0.5);
+  }
+  .rating-stars input:active + .star:before {
+    transform: scale(0.9);
+  }
+  .rating-stars input:checked ~ .star:before {
+    color: #ffcc33;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.8);
+  }
+  .rating-stars .star:before {
+    content: "★";
+    display: inline-block;
+    font-family: "Potta One", cursive;
+    font-size: 0.6rem;
     cursor: pointer;
-    color: gray; /* Default star color */
-    margin-right: 5px;
+    color: #0000;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    background-color: #aaa;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: all 0.3s;
+/* Hide radio buttons for stars */
+  .rating-stars input[type="radio"] {
+    display: none;
 }
 
-.rating-stars input[type="radio"]:checked ~ label {
-    color: orange; /* Color for checked stars */
+/* Responsive styling for smaller screens */
+@media (max-width: 600px) {
+    .rating-stars label,
+    #star label {
+        font-size: 1.5rem; /* Reduce star size for smaller screens */
+    }
+    .rating-stars {
+        gap: 3px; /* Adjust spacing for smaller devices */
+    }
 }
-
-.rating-stars label:hover,
-.rating-stars label:hover ~ label {
-    color: orange; /* Hover effect */
-}
+  }

@@ -70,6 +70,31 @@ class Classes
         return $this;
     }
 
+    public function getIns(): Collection
+{
+    return $this->ins;
+}
+
+public function setIns(Collection $ins): static
+{
+    $this->ins = $ins;
+
+    return $this;
+}
+
+public function addIns(Instructors $instructor): static
+{
+    if (!$this->ins->contains($instructor)) {
+        $this->ins->add($instructor);
+    }
+    return $this;
+}
+
+public function removeIns(Instructors $instructor): static
+{
+    $this->ins->removeElement($instructor);
+    return $this;
+}
 
 
     public function getDescription(): ?string

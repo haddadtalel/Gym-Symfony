@@ -520,16 +520,21 @@
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d188618.51311104256!2d-71.236572!3d42.381647!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1576756626784!5m2!1sen!2sbd" height="590" style="border: 0" allowfullscreen=""></iframe>
         <div class="map-contact-detalis">
+                        <h5 >Feedback</h5></br>
             <div class="map-contact-form">
-                {{ form_start(feedbackForm) }}
-        {{ form_row(feedbackForm.username, { 'attr': { 'placeholder': 'Your Name' } }) }}
-        {{ form_row(feedbackForm.class, { 'label': 'Class', 'attr': { 'placeholder': 'Select Class' } }) }}
-        {{ form_row(feedbackForm.message, { 'attr': { 'placeholder': 'Your Message' } }) }}
+    {{ form_start(feedbackForm) }}
+    {{ form_widget(feedbackForm.username) }}
+    {{ form_widget(feedbackForm.class, {  'attr': { 'placeholder': 'Select Class' } }) }}
+    {{ form_row(feedbackForm.message, { 'attr': { 'placeholder': 'Your Message' } }) }}
+    
+    <div id="star" class="rating-stars">
         {{ form_row(feedbackForm.rating, { 'label': 'Your Rating' }) }}
-        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
     {{ form_end(feedbackForm) }}
+</div>
 
-            </div>
         </div>
     </div>
     <!-- Map Section End -->
