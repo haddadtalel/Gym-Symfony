@@ -1,0 +1,15 @@
+{% extends 'home.html.twig' %}
+
+{% block body %}
+    <div class="map">
+        <div class="map-contact-form">
+            <h5>Feedback</h5>
+            {{ form_start(form) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.class) }}
+                {{ form_row(form.message) }}
+                <button type="submit" class="site-btn">Submit Now</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
