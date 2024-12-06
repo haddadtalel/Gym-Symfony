@@ -1,0 +1,16 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Edit Subscription{% endblock %}
+
+{% block body %}
+  <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-8 mx-auto">
+                <h1 class="mb-4">Edit Subscription</h1>
+                <div class="bg-secondary rounded p-4">
+                    {{ include('admin/subscription/_form.html.twig', {'button_label': 'Update'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

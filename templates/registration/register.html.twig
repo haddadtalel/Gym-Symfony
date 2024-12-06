@@ -1,0 +1,46 @@
+{% extends "auth.html.twig" %}
+{% block body %}
+
+<div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+   <div class="d-flex align-items-center justify-content-between mb-3">
+      <a href="index.html" class="">
+         <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Fitness & Health Admin</h3>
+      </a>
+      <h3>Sign In</h3>
+   </div>
+    {{ form_start(registrationForm, { 'attr': { 'class': 'needs-validation' } }) }}
+    
+    <div class="form-floating mb-3">
+        {{ form_widget(registrationForm.username, { 'attr': { 'class': 'form-control', 'placeholder': 'Username', 'id': 'floatingText' } }) }}
+        <label for="floatingText">Username</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        {{ form_widget(registrationForm.nom, { 'attr': { 'class': 'form-control', 'placeholder': 'Name', 'id': 'floatingInput' } }) }}
+        <label for="floatingInput">Name</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        {{ form_widget(registrationForm.prenom, { 'attr': { 'class': 'form-control', 'placeholder': 'Prenom', 'id': 'floatingPrenom' } }) }}
+        <label for="floatingPrenom">Prenom</label>
+    </div>
+    
+    <div class="form-floating mb-4">
+        {{ form_widget(registrationForm.plainPassword, { 'attr': { 'class': 'form-control', 'placeholder': 'Password', 'id': 'floatingPassword' } }) }}
+        <label for="floatingPassword">Password</label>
+    </div>
+    
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="form-check">
+            {{ form_widget(registrationForm.agreeTerms, { 'attr': { 'class': 'form-check-input', 'id': 'exampleCheck1' } }) }}
+            <label class="form-check-label" for="exampleCheck1">Agree terms</label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+    <p class="text-center mb-0">Already have an Account? <a href="{{ path('app_login') }}">Sign In</a></p>
+    
+    {{ form_end(registrationForm) }}
+</div>
+
+{% endblock %}

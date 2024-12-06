@@ -1,0 +1,74 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Subscription Details{% endblock %}
+
+{% block body %}
+<div class="col-sm-12 col-xl-8 mx-auto">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Subscription Details</h6>
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Field</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ subscription.id }}</td>
+                </tr>
+                <tr>
+                    <th>User</th>
+                    <td>
+                        {% if subscription.user %}
+                            {{ subscription.user.prenom }} {{ subscription.user.nom }} ({{ subscription.user.username }})
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Pack</th>
+                    <td>
+                        {% if subscription.pack %}
+                            Type: {{ subscription.pack.type.value }}, Duration: {{ subscription.pack.duration.value }}, Amount: {{ subscription.pack.amount }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                
+                        
+                <tr>
+                    <th>Start Date</th>
+                    <td>{{ subscription.StartDate ? subscription.StartDate|date('Y-m-d') : 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <th>End Date</th>
+                    <td>{{ subscription.EndDate ? subscription.EndDate|date('Y-m-d') : 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <th>Payment Method</th>
+                    <td>{{ subscription.PaymentMethod }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ subscription.status ? 'Active' : 'Inactive' }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ subscription.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <a href="{{ path('app_admin_subscription_index') }}" class="btn btn-info">Back to List</a>
+            <a href="{{ path('app_admin_subscription_edit', {'id': subscription.id}) }}" class="btn btn-warning">Edit</a>
+            {{ include('admin/subscription/_delete_form.html.twig') }}
+        </div>
+    </div>   
+</div>
+{% endblock %}

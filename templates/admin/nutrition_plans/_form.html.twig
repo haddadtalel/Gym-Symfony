@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="text-centre">
+        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+        <a href="{{ path('app_admin_nutrition_plans_index') }}" class="btn btn-info">back to list</a>
+    </div>
+{{ form_end(form) }}

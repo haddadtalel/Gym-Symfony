@@ -1,0 +1,47 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Instructors Index{% endblock %}
+
+{% block body %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-8 mx-auto">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4 text-white">Instructors Index</h6>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Spec</th>
+                            <th scope="col">Bio</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for instructor in instructors %}
+                        <tr>
+                            <th scope="row">{{ instructor.id }}</th>
+                            <td>{{ instructor.nom }}</td>
+                            <td>{{ instructor.spec }}</td>
+                            <td>{{ instructor.bio }}</td>
+                            <td>
+                                <a href="{{ path('app_admin_instructors_show', {'id': instructor.id}) }}" class="btn btn-sm btn-primary">Show</a>
+                                <a href="{{ path('app_admin_instructors_edit', {'id': instructor.id}) }}" class="btn btn-sm btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="text-end">
+                    <a href="{{ path('app_admin_instructors_new') }}" class="btn btn-success">Create New</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

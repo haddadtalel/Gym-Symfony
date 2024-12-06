@@ -1,0 +1,61 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Equipments{% endblock %}
+
+{% block body %}
+    <div class="col-sm-12 col-xl-8 mx-auto">
+        <div class="bg-secondary rounded h-100 p-4">
+            <h6 class="mb-4">Class Details</h6>
+
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ equipment.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ equipment.name }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ equipment.type }}</td>
+            </tr>
+            <tr>
+                <th>Eqcondition</th>
+                <td>{{ equipment.Eqcondition }}</td>
+            </tr>
+            <tr>
+                <th>Last_maint_date</th>
+                <td>{{ equipment.lastMaintDate ? equipment.lastMaintDate|date('Y-m-d') : 'New Condition' }}</td>
+            </tr>
+            <tr>
+                <th>Classes Associated with This Equipment</th>
+                <td>
+                    {% if equipment.class|length > 0 %}
+                        <ul>
+                            {% for class in equipment.class %}
+                                <li>{{ class.category }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <span>No classes associated.</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        <div class="d-flex justify-content-between">
+                <a href="{{ path('app_admin_equipments_index') }}" class="btn btn-info">Back to List</a>
+                <a href="{{ path('app_admin_equipments_edit', {'id': equipment.id}) }}" class="btn btn-warning">Edit</a>
+                {{ include('admin/equipments/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

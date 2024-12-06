@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Login</title>
+      <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
+   </head>
+   <body>
+      <div class="unique-wrapper">
+         <div class="unique-title">
+            Login 
+         </div>
+         <form action="{{ path('') }}" method="POST">
+            <!-- Email Field -->
+            <div class="unique-field">
+               <input type="email" id="email" name="email" required>
+               <label for="email">Email Address</label>
+            </div>
+
+            <!-- Password Field -->
+            <div class="unique-field">
+               <input type="password" id="password" name="password" required>
+               <label for="password">Password</label>
+            </div>
+
+            
+            <!-- Submit Button -->
+            <div class="unique-field">
+               <input type="submit" value="Login">
+            </div>
+
+            <!-- Sign-up Link -->
+            <div class="signup-link">
+               Not a member? <a href="{{ path('') }}">Signup now</a>
+            </div>
+         </form>
+      </div>
+   </body>
+</html>

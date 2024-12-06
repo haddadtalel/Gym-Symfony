@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<title>Hello TimetableController!</title>
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>C:/laragon/www/Gym/src/Controller/User/TimetableController.php</code></li>
+        <li>Your template at <code>C:/laragon/www/Gym/templates/user/timetable/index.html.twig</code></li>
+    </ul>
+</div>
+
+
+<section class="classtime-section class-time-table spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Classtime Table</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="timetable-controls">
+                    <ul>
+                        <li class="active" data-tsfilter="all">all class</li>
+                        <li >crossfit</li>
+                        <li>lunge ball</li>
+                        <li>ppsr</li>
+                        <li>walls</li>
+                        <li>candy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="classtime-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for schedule in schedules %}
+                        <tr data-class="{{ schedule.room|lower }}">
+                            <td class="workout-time">{{ schedule.startTime ? schedule.startTime|date('H:i') : '' }}</td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Monday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Tuesday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Wednesday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Thursday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Friday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Saturday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+
+                            <td class="hover-bg ts-item">
+                                {% if schedule.startTime|date('l') == 'Sunday' %}
+                                    <span>{{ schedule.startTime|date('H:i') }} - {{ schedule.endTime|date('H:i') }}</span>
+                                    <h6>{{ schedule.room }}</h6>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">{{ button_label|default('Save') }}</button>
+            <a href="{{ path('app_admin_instructors_index') }}" class="btn btn-info">Back to List</a>
+        </div>
+{{ form_end(form) }}

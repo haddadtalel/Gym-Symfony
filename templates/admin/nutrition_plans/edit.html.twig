@@ -1,0 +1,18 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Edit NutritionPlans{% endblock %}
+
+{% block body %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-8 mx-auto">
+            <div class="bg-secondary rounded h-100 p-4">
+    <h1></h1>
+                <h6 class="mb-4 text-white">Edit NutritionPlans</h6>
+                {{ include('admin/nutrition_plans/_form.html.twig', {'button_label': 'Update'}) }}
+                {{ include('admin/nutrition_plans/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

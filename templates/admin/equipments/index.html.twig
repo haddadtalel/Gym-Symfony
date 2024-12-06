@@ -1,0 +1,56 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Equipments Index{% endblock %}
+
+{% block body %}
+    <div class="col-sm-12 col-xl-8 mx-auto">
+        <div class="bg-secondary rounded h-100 p-4">
+            <h6 class="mb-4">Equipments</h6>
+
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Condition</th>
+                        <th>Last Maintenance Date</th>
+                        <th>Classes</th>  <!-- Added Classes column -->
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for equipment in equipments %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ equipment.id }}</td>
+                            <td>{{ equipment.name }}</td>
+                            <td>{{ equipment.type }}</td>
+                            <td>{{ equipment.Eqcondition }}</td>
+                            <td>{{ equipment.lastMaintDate ? equipment.lastMaintDate|date('Y-m-d') : 'New Condition' }}</td>
+                            <td>
+                                <!-- Displaying the categories of associated classes -->
+                                {% for class in equipment.class %}
+                                    {{ class.category }}{% if not loop.last %}, {% endif %}
+                                {% else %}
+                                    No class assigned
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{{ path('app_admin_equipments_show', {'id': equipment.id}) }}" class="btn btn-sm btn-success">Show</a>
+                                <a href="{{ path('app_admin_equipments_edit', {'id': equipment.id}) }}" class="btn btn-sm btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">No records found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('app_admin_equipments_new') }}" class="btn btn-info">Create New</a>
+        </div>
+    </div>
+{% endblock %}

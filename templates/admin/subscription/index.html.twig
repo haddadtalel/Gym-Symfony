@@ -1,0 +1,59 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Subscription Index{% endblock %}
+
+{% block body %}
+<div class="col-sm-12 col-xl-8 mx-auto">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Subscription Table</h6>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Pack</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Payment Method</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subscription in subscriptions %}
+                    <tr>
+                        <td>{{ subscription.id }}</td>
+                        <td>
+                            {% if subscription.user %}
+                                {{ subscription.user.prenom }} {{ subscription.user.nom }} ({{ subscription.user.username }})
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if subscription.pack %}
+                                Type: {{ subscription.pack.type.value }}, Duration: {{ subscription.pack.duration.value }}, Amount: {{ subscription.pack.amount }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>{{ subscription.StartDate ? subscription.StartDate|date('Y-m-d') : '' }}</td>
+                        <td>{{ subscription.EndDate ? subscription.EndDate|date('Y-m-d') : '' }}</td>
+                        <td>{{ subscription.PaymentMethod }}</td>
+                        <td>{{ subscription.status ? 'Active' : 'Inactive' }}</td>
+                        <td>
+                            <a href="{{ path('app_admin_subscription_show', {'id': subscription.id}) }}" class="btn btn-sm btn-primary">Show</a>
+                            <a href="{{ path('app_admin_subscription_edit', {'id': subscription.id}) }}" class="btn btn-sm btn-warning">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8" class="text-center">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_admin_subscription_new')}}" class="btn btn-success">Create New</a>
+    </div>
+</div>
+{% endblock %}

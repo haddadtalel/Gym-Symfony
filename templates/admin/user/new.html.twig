@@ -1,0 +1,18 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+     <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-8 mx-auto">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4 text-white">Create New User</h6>
+                    {{ include('admin/user/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+        </div>
+    </div>
+{% endblock %}

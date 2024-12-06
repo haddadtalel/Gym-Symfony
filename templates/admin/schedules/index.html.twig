@@ -1,0 +1,58 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Schedules Index{% endblock %}
+
+{% block body %}
+    <div class="col-sm-12 col-xl-8 mx-auto">
+        <div class="bg-secondary rounded h-100 p-4">
+            <h6 class="mb-4">Schedules List</h6>
+
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Room</th>
+                        <th>Courses</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for schedule in schedules %}
+                        <tr>
+                            <td>{{ schedule.id }}</td>
+                            <td>{{ schedule.startTime ? schedule.startTime|date('Y-m-d H:i:s') : 'N/A' }}</td>
+                            <td>{{ schedule.endTime ? schedule.endTime|date('Y-m-d H:i:s') : 'N/A' }}</td>
+                            <td>{{ schedule.room }}</td>
+                            <td>
+                                {% if schedule.classes is not empty %}
+                                    <ul>
+                                        {% for class in schedule.classes %}
+                                            <li>
+                                                <strong>{{ class.category }}</strong> - {{ class.description }}<br>
+                                                Capacity: {{ class.capacity }}<br>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <span>No courses assigned</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('app_admin_schedules_show', {'id': schedule.id}) }}" class="btn btn-sm btn-info">Show</a>
+                                <a href="{{ path('app_admin_schedules_edit', {'id': schedule.id}) }}" class="btn btn-sm btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('app_admin_schedules_new') }}" class="btn btn-success mt-3">Create New</a>
+        </div>
+    </div>
+{% endblock %}

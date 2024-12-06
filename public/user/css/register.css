@@ -1,0 +1,94 @@
+/* Sign Up and Login Form Styles */
+
+/* Wrapper for form */
+.lgf-wrapper {
+    width: 380px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    padding: 15px; /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Allow content to define the height */
+    min-height: 400px; /* Minimum height to keep the box balanced */
+}
+
+/* Title for form */
+.lgf-wrapper .lgf-title {
+    font-size: 30px; /* Slightly smaller title font */
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    padding: 15px; /* Reduced padding */
+    border-radius: 15px 15px 0 0;
+}
+
+/* Form container */
+.lgf-wrapper form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0; /* Reduced padding */
+}
+
+/* Field container for input fields */
+.lgf-wrapper form .lgf-field {
+    position: relative;
+    margin-top: 15px; /* Reduced top margin */
+}
+
+/* Input fields style */
+.lgf-wrapper form .lgf-field input {
+    width: 100%;
+    padding: 14px; /* Reduced padding */
+    font-size: 16px; /* Slightly smaller font */
+    height: 45px; /* Reduced height */
+    border: 1px solid lightgrey;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Label style */
+.lgf-wrapper form .lgf-field label {
+    display: block;
+    font-size: 16px; /* Slightly smaller label font */
+    color: #999;
+    margin-bottom: 5px;
+}
+
+/* Submit button styles */
+.lgf-wrapper form .lgf-field input[type="submit"] {
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    color: white;
+    border: none;
+    padding: 10px 0; /* Reduced padding */
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+/* Button active state */
+.lgf-wrapper form .lgf-field input[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+/* Link styling */
+.lgf-wrapper form .lgf-signup-link {
+    color: #262626;
+    margin-top: 15px; /* Reduced top margin */
+    text-align: center;
+}
+
+.lgf-wrapper form .lgf-signup-link a {
+    color: #4158d0;
+    text-decoration: none;
+}
+
+.lgf-wrapper form .lgf-signup-link a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,48 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Nutrition Plan Details{% endblock %}
+
+{% block body %}
+<div class="col-sm-12 col-xl-8 mx-auto">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Nutrition Plan Details</h6>
+
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Field</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">ID</th>
+                    <td>{{ nutrition_plan.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Meal Detail</th>
+                    <td>{{ nutrition_plan.mealDetail }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Calories</th>
+                    <td>{{ nutrition_plan.calories }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Start Date</th>
+                    <td>{{ nutrition_plan.startDate ? nutrition_plan.startDate|date('Y-m-d') : 'N/A' }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">End Date</th>
+                    <td>{{ nutrition_plan.endDate ? nutrition_plan.endDate|date('Y-m-d') : 'N/A' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{{ path('app_admin_nutrition_plans_index') }}" class="btn btn-info">Back to List</a>
+            <a href="{{ path('app_admin_nutrition_plans_edit', {'id': nutrition_plan.id}) }}" class="btn btn-warning">Edit</a>
+            {{ include('admin/nutrition_plans/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}
